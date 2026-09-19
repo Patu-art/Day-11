@@ -179,7 +179,7 @@ h1,h2,h3,p,figure{margin:0}::selection{background:#dda76e;color:var(--coal)}
 }
 @media(max-width:390px){
   .hero h1{font-size:clamp(59px,14.5vw,69px)}
-  .hero h1 span{font-size:.86em}
+  .hero h1 span{font-size:clamp(43px,10vw,55px)}
   .hero-actions{align-items:flex-start;gap:10px}
   .sold-out-inner a{margin-left:0}
   .section-top h2{font-size:clamp(52px,12.8vw,65px)}
