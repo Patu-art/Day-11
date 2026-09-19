@@ -1,0 +1,3 @@
+# Replace concept illustration with genuine Sandy’s Smokeshed photos
+
+Priority: 1) Real brisket or short rib portrait/landscape for hero, 2) actual Arch 121 shopfront under railway, 3) smoker Angela (get owner’s permission), 4) Sam preparing BBQ, 5) sandwiches + sides, 6) official logo / current menu board. Prefer 1600px+ photography and permission to republish, including any people visible. Names and asset slots must be integrated after photos are provided; there are **no missing photo requests in the live page**. Current original SVG illustrations are not representations of the venue. Do not use third-party press photos without permission.
