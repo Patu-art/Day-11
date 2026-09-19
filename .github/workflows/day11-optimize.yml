@@ -23,6 +23,9 @@ jobs:
           root=Path('assets/photos')
           for name in ['01-sandwich','03-branded-smoker','04-brisket-slices','05-angela-smoker','07-meat-on-grill']:
               im=Image.open(root/(name+'.png')).convert('RGB')
+              if name=='05-angela-smoker':
+                  # Source image has substantial white padding above and below the equipment.
+                  im=im.crop((0,350,im.width,1400))
               im.thumbnail((1500,1900),Image.Resampling.LANCZOS)
               im.save(root/(name+'.webp'),format='WEBP',quality=82,method=6)
           logo=Image.open(root/'06-official-logo.png').convert('RGB')
