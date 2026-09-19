@@ -1,1 +1,33 @@
-(()=>{'use strict';document.documentElement.classList.add('js');const toggle=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');function close(){if(!toggle||!nav)return;toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open menu');nav.classList.remove('open');document.body.classList.remove('menu-open')}if(toggle&&nav){toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close menu':'Open menu');nav.classList.toggle('open',open);document.body.classList.toggle('menu-open',open)});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});document.addEventListener('pointerdown',e=>{if(nav.classList.contains('open')&&!nav.contains(e.target)&&!toggle.contains(e.target))close()});const screen=window.matchMedia('(min-width:901px)');screen.addEventListener?.('change',()=>{if(screen.matches)close()})}const blocks=document.querySelectorAll('.reveal');if('IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){const io=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){entry.target.classList.add('visible');io.unobserve(entry.target)}}},{threshold:.07,rootMargin:'0px 0px 30px 0px'});blocks.forEach(el=>io.observe(el))}else blocks.forEach(el=>el.classList.add('visible'));})();
+(()=>{
+"use strict";
+const menu=document.querySelector(".menu-toggle");
+const nav=document.querySelector(".site-nav");
+if(!menu||!nav)return;
+function closeMenu(){
+  menu.setAttribute("aria-expanded","false");
+  menu.setAttribute("aria-label","Open menu");
+  nav.classList.remove("open");
+  document.body.classList.remove("menu-open");
+}
+menu.addEventListener("click",()=>{
+  const opening=menu.getAttribute("aria-expanded")!=="true";
+  menu.setAttribute("aria-expanded",String(opening));
+  menu.setAttribute("aria-label",opening?"Close menu":"Open menu");
+  nav.classList.toggle("open",opening);
+  document.body.classList.toggle("menu-open",opening);
+  if(opening)nav.querySelector("a")?.focus();
+});
+nav.querySelectorAll("a").forEach(link=>link.addEventListener("click",closeMenu));
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape"&&menu.getAttribute("aria-expanded")==="true"){
+    closeMenu();menu.focus();
+  }
+});
+document.addEventListener("pointerdown",event=>{
+  if(nav.classList.contains("open")&&!nav.contains(event.target)&&!menu.contains(event.target))closeMenu();
+});
+const breakpoint=window.matchMedia("(min-width:851px)");
+breakpoint.addEventListener?.("change",()=>{
+  if(breakpoint.matches)closeMenu();
+});
+})();
