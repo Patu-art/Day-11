@@ -1,0 +1,49 @@
+name: Import supplied Sandy photos
+on:
+  push:
+    paths:
+      - '.github/workflows/import-day11-photos.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import-photos:
+    if: github.repository == 'Patu-art/Day-11'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download and hash-verify seven images
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/photos
+          curl -fLsS --retry 4 --connect-timeout 20 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J3dJDO4kVRMf5UPwJeCA5xocmE/5123b008-9fe4-4540-86ca-47484cc36703.png' -o 'assets/photos/01-sandwich.png'
+          curl -fLsS --retry 4 --connect-timeout 20 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J3dJDO4kVRMf5UPwJeCA5xocmE/47ccf9d2-d89b-4175-9bdb-579915b11e92.png' -o 'assets/photos/02-grill-caption.png'
+          curl -fLsS --retry 4 --connect-timeout 20 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J3dJDO4kVRMf5UPwJeCA5xocmE/ab704b0d-da1a-440c-a68e-fbbbccbddfab.png' -o 'assets/photos/03-branded-smoker.png'
+          curl -fLsS --retry 4 --connect-timeout 20 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J3dJDO4kVRMf5UPwJeCA5xocmE/1972afb4-4aa7-46a7-ae64-320b377d135d.png' -o 'assets/photos/04-brisket-slices.png'
+          curl -fLsS --retry 4 --connect-timeout 20 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J3dJDO4kVRMf5UPwJeCA5xocmE/909d42f5-8253-4b7b-ae70-d129098a8b7f.png' -o 'assets/photos/05-angela-smoker.png'
+          curl -fLsS --retry 4 --connect-timeout 20 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J3dJDO4kVRMf5UPwJeCA5xocmE/d3ed9abb-e4d8-4524-8bcd-b5dfa679ba65.png' -o 'assets/photos/06-official-logo.png'
+          curl -fLsS --retry 4 --connect-timeout 20 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J3dJDO4kVRMf5UPwJeCA5xocmE/ca860229-5552-47c5-a70b-d910596c5818.png' -o 'assets/photos/07-meat-on-grill.png'
+          cat > /tmp/sandy-images.sha256 <<'EOF'
+          b70f192f91a10dd3bec18b7ff17219265f11c141f124845726bf551178de22b7  assets/photos/01-sandwich.png
+          96223549a33d1fefd16c7086ddbdc4ba4e5bb9b0570b6aa44b531f33fe170d59  assets/photos/02-grill-caption.png
+          4d9a325015816c9cca460d57926f47bcb9b2d812278ef4dc4076c22d866622f7  assets/photos/03-branded-smoker.png
+          7b260488b28775992c3c8f06cb11e717cefed699539786e4835d36e8bc5c3ac0  assets/photos/04-brisket-slices.png
+          0397d22b9f8bffe33a23910ee791f6c1a2314e018dc306daccaf3015af86f0e1  assets/photos/05-angela-smoker.png
+          25fa5ce587dbf7d01ae8301972cd49d09654c8efab51807f806dae0be5f8787e  assets/photos/06-official-logo.png
+          1e86d75407e64c9ede11483d8bfdb3ef8d281cb4b87fd358c75a553c65e3d0be  assets/photos/07-meat-on-grill.png
+          EOF
+          sha256sum -c /tmp/sandy-images.sha256
+      - name: Commit images into main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/photos/*.png
+          if ! git diff --staged --quiet; then
+            git commit -m 'Add seven supplied Sandy Smokeshed images and official logo'
+            git push
+          fi
