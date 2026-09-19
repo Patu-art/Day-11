@@ -1,0 +1,39 @@
+name: Import Day 11 SITEPRO website
+on:
+  push:
+    paths:
+      - '.github/workflows/import-day11.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import-site:
+    if: github.repository == 'Patu-art/Day-11'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download and verify Day 11 production package
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error --retry 3 'https://d2ol7oe51mr4n9.cloudfront.net/user_3J3dJDO4kVRMf5UPwJeCA5xocmE/315d3d7f-7b41-4204-a5fd-610e85657682.zip' -o /tmp/day11-site.zip
+          echo 'ce8d9f3aedc591afc29f17db527b6bb6c4134be7b78ddba850677643477a1945  /tmp/day11-site.zip' | sha256sum --check -
+          unzip -t /tmp/day11-site.zip
+          unzip -oq /tmp/day11-site.zip -d .
+          test -s index.html
+          test -s style.css
+          test -s script.js
+          test -s assets/illustrations/arch-hero.svg
+          test -f .nojekyll
+      - name: Commit complete website
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/import-day11.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Publish complete Day 11 Sandys Smokeshed frontend and original assets'
+          git push
