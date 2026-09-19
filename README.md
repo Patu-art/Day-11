@@ -1,27 +1,32 @@
-# Day 11 — Sandy’s Smokeshed | Under the Arch
+# Day 11 — Sandy's Smokeshed
 
-Unofficial, frontend-only website demo for Sandy’s Smokeshed in Manchester. Separate `index.html`, `style.css`, `script.js`; all displayed photographs and logo are served from local repository paths in `assets/photos/`. No backend, ordering system or unverified real-time food availability.
+An **unofficial frontend-only concept** for Sandy's Smokeshed in Castlefield, Manchester, built for the 100 Days Local Business Website Challenge.
 
-Live website: https://patu-art.github.io/Day-11/
+**Live page:** https://patu-art.github.io/Day-11/
 
-## User-supplied brand photographs (7 files)
+## Site direction
 
-1. `assets/photos/01-sandwich.png` — sandwich in front of railway arches; hero photograph.
-2. `assets/photos/02-grill-caption.png` — smoker full of meat with an existing text overlay; supporting photograph in the Visit section. **This is not an exterior photo.**
-3. `assets/photos/03-branded-smoker.png` — Sandy’s branding above cooked meat; supporting food gallery.
-4. `assets/photos/04-brisket-slices.png` — sliced beef brisket; main food feature.
-5. `assets/photos/05-angela-smoker.png` — large offset smoker; Meet Angela section.
-6. `assets/photos/06-official-logo.png` — logo provided by user; header, footer and favicon.
-7. `assets/photos/07-meat-on-grill.png` — clean close-up of meat in smoker; food gallery.
+This iteration replaces the original generic illustrated BBQ layout with a compact, photography-led hospitality design using Sandy's real supplied assets. Customer journey: BBQ and location in the hero → food photography → smoker story → visit/directions. No backend, invented live inventory, fake booking form or unverified current opening hours.
 
-The supplied original PNG files were uploaded with SHA-256 verification in a one-time GitHub Actions transfer. Previous concept illustrations remain in `assets/illustrations/` as unused legacy assets, not visible on the customer-facing page.
+## Real brand assets
 
-## Content checks
+Original files supplied by the user are retained under `assets/photos/*.png`; the public page uses compressed responsive WebP derivatives to load faster:
 
-Sources used in original concept: The Manc (21 August 2026) and Taste of Manchester (2 August 2026), linked in the earlier version of this README. Confirm daily availability, hours, product details, street address and any descriptions of the owner/smoker directly with the restaurant. The site makes no real-time stock or order claim.
+- `01-sandwich.webp`: sandwich under the railway arches — hero.
+- `04-brisket-slices.webp`: sliced brisket — main food photograph.
+- `07-meat-on-grill.webp`: meat cooking — secondary food photograph.
+- `05-angela-smoker.webp`: cropped real offset smoker — smoker section; whitespace from the provided source was removed.
+- `06-logo-cropped.webp`: cropped version of the supplied official logo — header and footer.
+- `06-official-logo.png`: original logo — favicon.
 
-This is an unofficial concept. The user provided the brand media for inclusion in the demo; the brand’s approval and any third-party photographer/recognizable-person permissions have not been independently verified. Obtain appropriate permissions before presenting the site as an official restaurant website.
+`02-grill-caption.png` and `03-branded-smoker.png` are retained but not needed in the final website. The previous concept illustrations remain in the repository as **unused** design-development files.
 
-## Deployment
+## Run and publish
 
-GitHub Pages: `main` / repository root. Open `index.html` via Live Server to preview locally. CSS/JS and all photo paths are relative to the site root.
+Open `index.html` using VS Code Live Server. GitHub Pages serves `main` / repository root. Separate HTML, CSS and JavaScript files. All photographs and styling are linked by relative paths; no build step.
+
+The restaurant's official social profile and a directions link are external. The venue may sell out; this website never asserts that any particular dish is available right now.
+
+## Before client adoption
+
+This is not the official business site. Check photography/logo reuse rights, current address, menu, hours and customer entrance with the owner. Photography supplied for this demo is not evidence of an independent licence from its photographer or subjects.
