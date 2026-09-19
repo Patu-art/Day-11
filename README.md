@@ -1,13 +1,27 @@
 # Day 11 — Sandy’s Smokeshed | Under the Arch
 
-An unofficial, frontend-only website demo in the 100 Days Challenge. Separate `index.html`, `style.css`, `script.js`; all essential SVG assets are local and the site runs offline (web fonts optional). No backend, reservations, false current availability or ordering.
+Unofficial, frontend-only website demo for Sandy’s Smokeshed in Manchester. Separate `index.html`, `style.css`, `script.js`; all displayed photographs and logo are served from local repository paths in `assets/photos/`. No backend, ordering system or unverified real-time food availability.
 
-## Sources / accuracy (checked 19 Sep 2026)
-- The Manc, 21 August 2026: https://themanc.com/food-and-drink/the-new-bbq-restaurant-beneath-a-manchester-railway-arch-where-meat-is-cooked-very-very-slowly/ — owner Sam, smoker Angela, wood, highlighted cuts and sides, reported Tue–Sat from 11am until sold out.
-- Taste of Manchester, 2 August 2026: https://tasteofmanchester.com/news/the-latest-new-openings-in-manchester-in-august-2026/ — Arch 121 Woollam Place M3 4JJ.
+Live website: https://patu-art.github.io/Day-11/
 
-## Brand and imagery
-Brand mark is a **concept**, not the restaurant's official logo. The site includes original local illustrative SVG files only, intentionally not claiming to depict Sandy’s food, building or actual smoker. Real product/venue photography and the official logo are the main outstanding owner-supplied assets. See `assets/photos/README.md`. Current hours, menu, exact services, public phone and social handle need verification directly with the business before a client-facing final release. The site is a demo, not official.
+## User-supplied brand photographs (7 files)
 
-## Local run and deployment
-Open `index.html` in a browser or VS Code Live Server; root contains `.nojekyll` for GitHub Pages. `index.html` is in project root with relative paths and no build step. If publishing to a new `Day-11` repository, GitHub Pages should use `main` / root.
+1. `assets/photos/01-sandwich.png` — sandwich in front of railway arches; hero photograph.
+2. `assets/photos/02-grill-caption.png` — smoker full of meat with an existing text overlay; supporting photograph in the Visit section. **This is not an exterior photo.**
+3. `assets/photos/03-branded-smoker.png` — Sandy’s branding above cooked meat; supporting food gallery.
+4. `assets/photos/04-brisket-slices.png` — sliced beef brisket; main food feature.
+5. `assets/photos/05-angela-smoker.png` — large offset smoker; Meet Angela section.
+6. `assets/photos/06-official-logo.png` — logo provided by user; header, footer and favicon.
+7. `assets/photos/07-meat-on-grill.png` — clean close-up of meat in smoker; food gallery.
+
+The supplied original PNG files were uploaded with SHA-256 verification in a one-time GitHub Actions transfer. Previous concept illustrations remain in `assets/illustrations/` as unused legacy assets, not visible on the customer-facing page.
+
+## Content checks
+
+Sources used in original concept: The Manc (21 August 2026) and Taste of Manchester (2 August 2026), linked in the earlier version of this README. Confirm daily availability, hours, product details, street address and any descriptions of the owner/smoker directly with the restaurant. The site makes no real-time stock or order claim.
+
+This is an unofficial concept. The user provided the brand media for inclusion in the demo; the brand’s approval and any third-party photographer/recognizable-person permissions have not been independently verified. Obtain appropriate permissions before presenting the site as an official restaurant website.
+
+## Deployment
+
+GitHub Pages: `main` / repository root. Open `index.html` via Live Server to preview locally. CSS/JS and all photo paths are relative to the site root.
