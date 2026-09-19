@@ -3,7 +3,10 @@ on:
   push:
     paths:
       - '.github/workflows/day11-browser-qa.yml'
-      - 'assets/photos/05-angela-smoker.webp'
+      - 'index.html'
+      - 'style.css'
+      - 'script.js'
+      - 'assets/photos/*.webp'
   workflow_dispatch:
 permissions:
   contents: read
