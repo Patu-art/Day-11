@@ -1,5 +1,8 @@
 name: Optimize supplied Day 11 photography
 on:
+  push:
+    paths:
+      - '.github/workflows/day11-optimize.yml'
   workflow_dispatch:
 permissions:
   contents: write
