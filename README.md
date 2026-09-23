@@ -2,7 +2,7 @@
 
 An **unofficial frontend-only concept** for Sandy's Smokeshed in Castlefield, Manchester, built for the 100 Days Local Business Website Challenge.
 
-**Live page:** https://patu-art.github.io/Day-11/
+[Live demo](https://patu-art.github.io/Day-11/) · [Portfolio](https://patu-art.github.io/Portfolio/) · [Challenge log](https://patu-art.github.io/Portfolio/challenge.html)
 
 ## Site direction
 
